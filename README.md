@@ -16,5 +16,5 @@ sudo npm i -g tailwindcss@latest postcss@latest autoprefixer@latest
 
 
 in vim
-:Pluginstall
+:PlugInstall
 :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh coc-tailwindcss
