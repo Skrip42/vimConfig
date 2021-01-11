@@ -16,5 +16,5 @@ my new vim config
 
 
 in vim
-:PlugInstall
-:CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh coc-tailwindcss
+- :PlugInstall
+- :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh coc-tailwindcss
