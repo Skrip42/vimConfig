@@ -99,6 +99,9 @@
                     }
                 }
             }
+        },
+        "html": {
+            "filetypes": ["html", "html.twig"]
         }
     }
 }

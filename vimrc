@@ -5,19 +5,32 @@ call plug#begin('~/.bim/plugged')
 
 "colorschem
 Plug 'Skrip42/angr.vim'
-"nerdtree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"nertcommenter
+"dir exploration
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"commenter
 Plug 'scrooloose/nerdcommenter'
-"ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"clap
+"snippets
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
+"fzf and grep alternative
 Plug 'liuchengxu/vim-clap'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-"coc
+Plug 'liuchengxu/vim-clap', { 'on': 'Clap', 'do': ':Clap install-binary' }
+"language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"lightline
+"linter
+Plug 'vim-syntastic/syntastic'
+"buffers
+Plug 'ap/vim-buftabline'
+"bottom statusline
 Plug 'itchyny/lightline.vim'
+"git integration
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+"tmux integration
+Plug 'christoomey/vim-tmux-navigator'
+"twig fix
+Plug 'nelsyeung/twig.vim'
 
 call plug#end()
 
@@ -35,6 +48,8 @@ set mouse=a
 set wildmenu
 set wildmode=full
 set history=200
+
+set hidden
 
 if has("syntax") "//enable syntax
   syntax on
@@ -145,13 +160,10 @@ noremap <Leader>f :Clap files <CR>
 noremap <Leader>a :Clap grep <CR>
 
 "----------------------------------------------------------------------------------------------------
-"ultisnips plugin config
+"nert tree plugin config
 "----------------------------------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-set runtimepath+=~/.vim/UltiSnips
-let g:UltiSnipaSnippetDirectories=["~/.vim/UltiSnips"]
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeQuitOnOpen = 1
 
 "----------------------------------------------------------------------------------------------------
 "nerd commenter plugin config
@@ -168,6 +180,50 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 "----------------------------------------------------------------------------------------------------
+"syntastic plugin config
+"----------------------------------------------------------------------------------------------------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+"let g:syntastic_php_checkers = ['php', 'phpcs'] "uncoment this to disable phpcs and phpmb
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+
+"----------------------------------------------------------------------------------------------------
 "lightline plugin config
 "----------------------------------------------------------------------------------------------------
 set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+"----------------------------------------------------------------------------------------------------
+"fugitive plugin config
+"----------------------------------------------------------------------------------------------------
+nmap <F4> :Gblame<CR>
+nmap <F5> :Gdiffsplit<CR>
+
+"----------------------------------------------------------------------------------------------------
+"bugtabline plugin config
+"----------------------------------------------------------------------------------------------------
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+"----------------------------------------------------------------------------------------------------
+"vim template plugin config
+"----------------------------------------------------------------------------------------------------
+"autocmd BufRead *.* if getfsize(expand('%'))==0| :Template
+
+"----------------------------------------------------------------------------------------------------
+"coc-snippets plugin config
+"----------------------------------------------------------------------------------------------------
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)

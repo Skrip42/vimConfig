@@ -1,7 +1,9 @@
 # vimConfig
+
 my new vim config
 
-# install (opensuse)
+## install (opensuse)
+
 - zypper in cargo
 - zypper in libopenssl-devel
 - zypper in ripgrep
@@ -14,7 +16,8 @@ my new vim config
 - sudo npm i -g sql-language-server
 - sudo npm i -g tailwindcss@latest postcss@latest autoprefixer@latest
 
+## in vim
 
-in vim
 - :PlugInstall
-- :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh coc-tailwindcss
+- :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh
+    coc-tailwindcss coc-yaml coc-xml coc-vimlsp coc-svg coc-snippets coc-markdownlint
