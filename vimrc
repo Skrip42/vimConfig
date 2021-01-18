@@ -9,7 +9,8 @@ Plug 'Skrip42/angr.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "commenter
-Plug 'scrooloose/nerdcommenter'
+Plug 'Tomtom/tcomment_vim'
+"Plug 'preservim/nerdcommenter'
 "snippets
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'honza/vim-snippets'
@@ -31,6 +32,11 @@ Plug 'mhinz/vim-signify'
 Plug 'christoomey/vim-tmux-navigator'
 "twig fix
 Plug 'nelsyeung/twig.vim'
+"surround
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+"alignment
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -48,6 +54,7 @@ set mouse=a
 set wildmenu
 set wildmode=full
 set history=200
+set cmdheight=2
 
 set hidden
 
@@ -79,6 +86,10 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+"disable backup to corect coc worcking
+set nobackup
+set nowritebackup
 
 "set smarttab
 "set smartindent
@@ -166,9 +177,9 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeQuitOnOpen = 1
 
 "----------------------------------------------------------------------------------------------------
-"nerd commenter plugin config
+"clap plugin config
 "----------------------------------------------------------------------------------------------------
-map <C-_> <plug>NERDCommenterToggle
+"let g:clap_theme = { 'display': {'ctermbg': '235', 'guibg': '#272d3D'} }
 
 "----------------------------------------------------------------------------------------------------
 "coc plugin config
@@ -178,6 +189,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" diagnostic navigation
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> [f  <Plug>(coc-fix-current)
+
 
 "----------------------------------------------------------------------------------------------------
 "syntastic plugin config
@@ -191,6 +208,13 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 "----------------------------------------------------------------------------------------------------
+"tcomment plugin config
+"----------------------------------------------------------------------------------------------------
+nmap <silent> <c-_> :TComment
+vmap <silent> <c-_> :TComment
+
+
+"----------------------------------------------------------------------------------------------------
 "lightline plugin config
 "----------------------------------------------------------------------------------------------------
 set laststatus=2
@@ -198,12 +222,56 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ ['lineinfo', 'percent'],
+      \              ['coc_error', 'coc_warning', 'coc_hint', 'coc_info'],
+      \              ['fileformat', 'fileencoding', 'filetype', 'charvaluehex'] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
+      \ 'component_expand': {
+      \   'coc_error'        : 'LightlineCocErrors',
+      \   'coc_warning'      : 'LightlineCocWarnings',
+      \   'coc_info'         : 'LightlineCocInfos',
+      \   'coc_hint'         : 'LightlineCocHints',
+      \   'coc_fix'          : 'LightlineCocFixes',
+      \ },
+      \ 'component_type': {
+      \   'coc_error'        : 'error',
+      \   'coc_warning'      : 'warning',
+      \   'coc_info'         : 'tabsel',
+      \   'coc_hint'         : 'tabsel',
+      \   'coc_fix'          : 'tabsel',
       \ }
+      \ }
+
+function! s:lightline_coc_diagnostic(kind) abort
+  let info = get(b:, 'coc_diagnostic_info', 0)
+  if empty(info) || get(info, a:kind, 0) == 0
+    return ''
+  endif
+   return printf('%s: %d', a:kind, info[a:kind])
+  "return printf('%d', info[a:kind])
+endfunction
+
+function! LightlineCocErrors() abort
+  return s:lightline_coc_diagnostic('error')
+endfunction
+
+function! LightlineCocWarnings() abort
+  return s:lightline_coc_diagnostic('warning')
+endfunction
+
+function! LightlineCocInfos() abort
+  return s:lightline_coc_diagnostic('information')
+endfunction
+
+function! LightlineCocHints() abort
+  return s:lightline_coc_diagnostic('hint')
+endfunction
+
+autocmd User CocDiagnosticChange call lightline#update()
 
 "----------------------------------------------------------------------------------------------------
 "fugitive plugin config
@@ -218,12 +286,20 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 "----------------------------------------------------------------------------------------------------
-"vim template plugin config
-"----------------------------------------------------------------------------------------------------
-"autocmd BufRead *.* if getfsize(expand('%'))==0| :Template
-
-"----------------------------------------------------------------------------------------------------
 "coc-snippets plugin config
 "----------------------------------------------------------------------------------------------------
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'

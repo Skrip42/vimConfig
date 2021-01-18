@@ -21,3 +21,4 @@ my new vim config
 - :PlugInstall
 - :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh
     coc-tailwindcss coc-yaml coc-xml coc-vimlsp coc-svg coc-snippets coc-markdownlint
+    coc-phpls

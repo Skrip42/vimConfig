@@ -1,13 +1,5 @@
 {
     "languageserver": {
-        "intelephense": {
-            "command": "intelephense",
-            "args": ["--stdio"],
-            "filetypes": ["php"],
-            "initializationOptions": {
-                "storagePath": "/tmp/intelephense"
-            }
-        },
         "dockerfile": {
             "command": "docker-langserver",
             "filetypes": ["dockerfile"],
@@ -99,9 +91,6 @@
                     }
                 }
             }
-        },
-        "html": {
-            "filetypes": ["html", "html.twig"]
         }
     }
 }
