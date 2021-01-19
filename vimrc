@@ -10,9 +10,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "commenter
 Plug 'Tomtom/tcomment_vim'
-"Plug 'preservim/nerdcommenter'
 "snippets
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'honza/vim-snippets'
 "fzf and grep alternative
 Plug 'liuchengxu/vim-clap'
@@ -210,8 +208,9 @@ let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 "----------------------------------------------------------------------------------------------------
 "tcomment plugin config
 "----------------------------------------------------------------------------------------------------
-nmap <silent> <c-_> :TComment
-vmap <silent> <c-_> :TComment
+" let g:tcomment_maps = 0
+" nmap <c-_> :TComment<CR>
+" vmap <c-_> :'<,'>TCommentInline<CR>
 
 
 "----------------------------------------------------------------------------------------------------
@@ -303,3 +302,9 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+"----------------------------------------------------------------------------------------------------
+"easy-align plugin config
+"----------------------------------------------------------------------------------------------------
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
