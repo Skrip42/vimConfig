@@ -10,16 +10,33 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 "commenter
 Plug 'Tomtom/tcomment_vim'
-"snippets
-Plug 'honza/vim-snippets'
 "fzf and grep alternative
 Plug 'liuchengxu/vim-clap'
 Plug 'liuchengxu/vim-clap', { 'on': 'Clap', 'do': ':Clap install-binary' }
-"language server
+"coc-base server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"tabnine
+Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
+"language servers
+Plug 'neoclide/coc-json',            { 'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-go',                { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html',            { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css',             { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver',        { 'do': 'yarn install --frozen-lockfile'}
+Plug 'voldikss/coc-cmake',           { 'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-sh',                { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml',            { 'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-xml',          { 'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-vimlsp',            { 'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-svg',               { 'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-markdownlint', { 'do': 'yarn install --frozen-lockfile'}
+Plug 'marlonfan/coc-phpls',          { 'do': 'yarn install --frozen-lockfile'}
+"snippets
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'honza/vim-snippets'
 "linter
 Plug 'vim-syntastic/syntastic'
-"buffers
+"tot tabline
 Plug 'ap/vim-buftabline'
 "bottom statusline
 Plug 'itchyny/lightline.vim'
@@ -35,6 +52,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 "alignment
 Plug 'junegunn/vim-easy-align'
+"templator
+Plug 'skrip42/vim-templator'
 
 call plug#end()
 
@@ -308,3 +327,9 @@ let g:coc_snippet_next = '<tab>'
 "----------------------------------------------------------------------------------------------------
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+"----------------------------------------------------------------------------------------------------
+"templator plugin config
+"----------------------------------------------------------------------------------------------------
+" let g:templator_ingnore_priority = 1
+" let g:templator_autotemplate = 0

@@ -1,0 +1,50 @@
+[
+    {
+        "pattern":"\\.php",
+        "priority":0,
+        "command":"0r !cat ~/.vim/templates/php/simple",
+        "comment":"simple php"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+\\.php",
+        "priority":1,
+        "command":"0r !python ~/.vim/templates/php/class.py % %:p",
+        "comment":"php class"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+Interface\\.php",
+        "priority":2,
+        "command":"0r !python ~/.vim/templates/php/interface.py % %:p",
+        "comment":"php interface"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+Exception\\.php",
+        "priority":2,
+        "command":"0r !python ~/.vim/templates/php/exception.py % %:p",
+        "comment":"php exception"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+Controller\\.php",
+        "priority":2,
+        "command":"0r !python ~/.vim/templates/php/symfony_controller.py % %:p",
+        "comment":"symfony controller class"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+Type\\.php",
+        "priority":2,
+        "command":"0r !python ~/.vim/templates/php/symfony_form.py % %:p",
+        "comment":"symfony form type class"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+Command\\.php",
+        "priority":2,
+        "command":"0r !python ~/.vim/templates/php/symfony_command.py % %:p",
+        "comment":"symfony command class"
+    },
+    {
+        "pattern":"\\.json",
+        "priority":0,
+        "command":"0r !echo {}",
+        "comment":"json base"
+    }
+]

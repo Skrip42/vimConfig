@@ -8,6 +8,7 @@ my new vim config
 - zypper in libopenssl-devel
 - zypper in ripgrep
 - zypper in npm
+- zypper in yarn
 - zypper in git
 
 - sudo npm i intelephense -g
@@ -15,10 +16,9 @@ my new vim config
 - zypper in clang
 - sudo npm i -g sql-language-server
 - sudo npm i -g tailwindcss@latest postcss@latest autoprefixer@latest
+- zypper in pip
+- sudo pip install jedi
 
 ## in vim
 
 - :PlugInstall
-- :CocInstall coc-go coc-html coc-json coc-css coc-tsserver coc-cmake coc-sh
-    coc-tailwindcss coc-yaml coc-xml coc-vimlsp coc-svg coc-snippets coc-markdownlint
-    coc-phpls
