@@ -11,12 +11,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "commenter
 Plug 'Tomtom/tcomment_vim'
 "fzf and grep alternative
+Plug 'dyng/ctrlsf.vim'
 Plug 'liuchengxu/vim-clap'
-Plug 'liuchengxu/vim-clap', { 'on': 'Clap', 'do': ':Clap install-binary' }
+Plug 'liuchengxu/vim-clap',  { 'on': 'Clap', 'do': ':Clap install-binary' }
 "coc-base server
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim',    { 'branch': 'release'}
 "tabnine
-Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tabnine', { 'do': 'yarn install --frozen-lockfile'}
 "language servers
 Plug 'neoclide/coc-json',            { 'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go',                { 'do': 'yarn install --frozen-lockfile'}
@@ -53,8 +54,8 @@ Plug 'tpope/vim-repeat'
 "alignment
 Plug 'junegunn/vim-easy-align'
 "templator
-" Plug '~/project/templator'
-Plug 'skrip42/vim-templator'
+Plug '~/project/templator'
+" Plug 'skrip42/vim-templator'
 
 call plug#end()
 
@@ -185,8 +186,9 @@ autocmd BufWritePre * %s/\s\+$//e
 noremap <Leader>e :e . <CR>
 noremap <Leader>v :vsp . <CR>
 noremap <Leader>s :sp . <CR>
+noremap <Leader>a :CtrlSF
 noremap <Leader>f :Clap files <CR>
-noremap <Leader>a :Clap grep <CR>
+" noremap <Leader>a :Clap grep <CR>
 
 "----------------------------------------------------------------------------------------------------
 "nert tree plugin config

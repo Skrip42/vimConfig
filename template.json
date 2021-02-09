@@ -1,50 +1,80 @@
 [
     {
-        "pattern":"\\.php",
+        "pattern":"\\.php$",
         "priority":0,
         "command":"0r !cat ~/.vim/templates/php/simple",
         "comment":"simple php"
     },
     {
-        "pattern":"composer\\.json",
+        "pattern":"composer\\.json$",
         "priority":1,
         "command":"0r !python ~/.vim/templates/php/composer_json.py %:p",
         "comment":"composer.json"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+\\.php",
+        "pattern":"\\\/[A-Z]\\w+\\.php$",
         "priority":1,
         "command":"0r !python ~/.vim/templates/php/class.py % %:p",
         "comment":"php class"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+Interface\\.php",
+        "pattern":"\\\/[A-Z]\\w+Interface\\.php$",
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/interface.py % %:p",
         "comment":"php interface"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+Exception\\.php",
+        "pattern":"\\\/[A-Z]\\w+Exception\\.php$",
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/exception.py % %:p",
         "comment":"php exception"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+Controller\\.php",
+        "pattern":"\\\/[A-Z]\\w+Controller\\.php$",
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/symfony_controller.py % %:p",
         "comment":"symfony controller class"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+Type\\.php",
+        "pattern":"\\\/[A-Z]\\w+Type\\.php$",
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/symfony_form.py % %:p",
         "comment":"symfony form type class"
     },
     {
-        "pattern":"\\\/[A-Z]\\w+Command\\.php",
+        "pattern":"\\\/[A-Z]\\w+Command\\.php$",
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/symfony_command.py % %:p",
         "comment":"symfony command class"
+    },
+    {
+        "pattern":"\\\/templates.*\\.py$",
+        "priority":1,
+        "command":"0r !python ~/.vim/templates/python/template.py",
+        "comment":"python temlate template!"
+    },
+    {
+        "pattern":"\\\/Makefile$",
+        "priority":0,
+        "command":"0r !python ~/.vim/templates/cpp/makefile.py",
+        "comment":"base cpp makefile"
+    },
+    {
+        "pattern":"\\\/main\\.cpp$",
+        "priority":1,
+        "command":"0r !python ~/.vim/templates/cpp/maincpp.py",
+        "comment":"main.cpp template"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+\\.h$",
+        "priority":0,
+        "command":"source ~/.vim/templates/cpp/header.vim",
+        "comment":"cpp class header file"
+    },
+    {
+        "pattern":"\\\/[A-Z]\\w+\\.cpp$",
+        "priority":0,
+        "command":"0r !python ~/.vim/templates/cpp/cpp.py % %:p",
+        "comment":"cpp class source file"
     }
 ]
