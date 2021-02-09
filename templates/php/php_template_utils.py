@@ -7,7 +7,8 @@ def prepareAutoload(projectDir, filePath):
         with open(projectDir + 'composer.json') as composerJson:
             composer = json.load(composerJson)
         autoload = composer['autoload']['psr-4']
-        autoload.update(composer['autoload-dev']['psr-4'])
+        if 'autoload-dev' in composer.keys() :
+            autoload.update(composer['autoload-dev']['psr-4'])
         return autoload
     return {}
 
@@ -16,7 +17,10 @@ def createNamespace(projectDir, filePath):
 
     namespace = filePath
     for key in autoload :
-        namespace = namespace.replace(autoload[key], key)
+        if autoload[key] == '' :
+            namespace = key + namespace
+        else :
+            namespace = namespace.replace(autoload[key], key)
 
     namespace = namespace.title().replace('/', '\\').strip('\\')
     return namespace

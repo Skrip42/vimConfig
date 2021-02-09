@@ -53,6 +53,7 @@ Plug 'tpope/vim-repeat'
 "alignment
 Plug 'junegunn/vim-easy-align'
 "templator
+" Plug '~/project/templator'
 Plug 'skrip42/vim-templator'
 
 call plug#end()
@@ -332,4 +333,4 @@ xmap ga <Plug>(EasyAlign)
 "templator plugin config
 "----------------------------------------------------------------------------------------------------
 " let g:templator_ingnore_priority = 1
-" let g:templator_autotemplate = 0
+let g:templator_autotemplate = 1

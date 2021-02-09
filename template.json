@@ -6,6 +6,12 @@
         "comment":"simple php"
     },
     {
+        "pattern":"composer\\.json",
+        "priority":1,
+        "command":"0r !python ~/.vim/templates/php/composer_json.py %:p",
+        "comment":"composer.json"
+    },
+    {
         "pattern":"\\\/[A-Z]\\w+\\.php",
         "priority":1,
         "command":"0r !python ~/.vim/templates/php/class.py % %:p",
@@ -40,11 +46,5 @@
         "priority":2,
         "command":"0r !python ~/.vim/templates/php/symfony_command.py % %:p",
         "comment":"symfony command class"
-    },
-    {
-        "pattern":"\\.json",
-        "priority":0,
-        "command":"0r !echo {}",
-        "comment":"json base"
     }
 ]
