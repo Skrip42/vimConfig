@@ -1,6 +1,17 @@
 import json
 import os
 import re
+def sliceindex(x):
+    i = 0
+    for c in x:
+        if c.isalpha():
+            i = i + 1
+            return i
+        i = i + 1
+
+def upperfirst(x):
+    i = sliceindex(x)
+    return x[:i].upper() + x[i:]
 
 def prepareAutoload(projectDir, filePath):
     if os.path.isfile(projectDir + 'composer.json') :
@@ -22,7 +33,16 @@ def createNamespace(projectDir, filePath):
         else :
             namespace = namespace.replace(autoload[key], key)
 
-    namespace = namespace.title().replace('/', '\\').strip('\\')
+    namespace = namespace.split('/')
+    for nms in namespace :
+        if len(nms) :
+            nms = nms[0].title() + nms[1:]
+        # namespace[key] = namespace[key][0].title() + namespace[key][1:]
+    namespace = '\\'.join(namespace)
+    namespace = namespace.strip('\\')
+    # namespace = namespace.join('\\')
+    # namespace = namespace.title().replace('/', '\\').strip('\\')
+    # namespace = namespace.title().replace('/', '\\').strip('\\')
     return namespace
 
 def createClassName(fileName):

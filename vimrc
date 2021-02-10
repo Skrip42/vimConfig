@@ -56,6 +56,8 @@ Plug 'junegunn/vim-easy-align'
 "templator
 Plug '~/project/templator'
 " Plug 'skrip42/vim-templator'
+"hardtime
+Plug 'takac/vim-hardtime'
 
 call plug#end()
 
@@ -167,6 +169,7 @@ endfunction
 
 nmap <F3> :call LeftStatusToggle()<CR>
 nmap <F2> :set invlist<CR>
+nmap <F6> :HardTimeToggle<CR>
 
 "----------------------------------------------------------------------------------------------------
 "colorscheme
@@ -200,6 +203,12 @@ let g:NERDTreeQuitOnOpen = 1
 "clap plugin config
 "----------------------------------------------------------------------------------------------------
 "let g:clap_theme = { 'display': {'ctermbg': '235', 'guibg': '#272d3D'} }
+
+"----------------------------------------------------------------------------------------------------
+"function explode/implode
+"----------------------------------------------------------------------------------------------------
+nmap <silent> gse :.,+1! python3 ~/.vim/scripts/phpFunctionExploder.py <CR>
+vmap <silent> gse :'<,'>! python3 ~/.vim/scripts/phpFunctionImploder.py <CR>
 
 "----------------------------------------------------------------------------------------------------
 "coc plugin config
