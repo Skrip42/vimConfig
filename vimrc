@@ -58,6 +58,8 @@ Plug '~/project/templator'
 " Plug 'skrip42/vim-templator'
 "hardtime
 Plug 'takac/vim-hardtime'
+"tagbar
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -304,12 +306,6 @@ endfunction
 autocmd User CocDiagnosticChange call lightline#update()
 
 "----------------------------------------------------------------------------------------------------
-"fugitive plugin config
-"----------------------------------------------------------------------------------------------------
-nmap <F4> :Gblame<CR>
-nmap <F5> :Gdiffsplit<CR>
-
-"----------------------------------------------------------------------------------------------------
 "bugtabline plugin config
 "----------------------------------------------------------------------------------------------------
 nnoremap <C-N> :bnext<CR>
@@ -345,3 +341,34 @@ xmap ga <Plug>(EasyAlign)
 "----------------------------------------------------------------------------------------------------
 " let g:templator_ingnore_priority = 1
 let g:templator_autotemplate = 1
+
+"----------------------------------------------------------------------------------------------------
+"vista plugin config
+"----------------------------------------------------------------------------------------------------
+let g:vista_executive_for = {
+  \ 'cpp': 'coc',
+  \ 'php': 'coc',
+  \ }
+let g:vista_icon_indent = ["- ", "|- "]
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "namespace":"n:",
+\   "class":"c:",
+\   "interface":"i:",
+\   "constructor":"ƒ:",
+\   "const":"c:",
+\   "method":"ƒ:",
+\   "property":"p:",
+\   "function": "ƒ:",
+\   "variable": "v:",
+\  }
+
+"----------------------------------------------------------------------------------------------------
+"functional key bindings
+"----------------------------------------------------------------------------------------------------
+nmap <F2> :set invlist<CR>
+nmap <F3> :call LeftStatusToggle()<CR>
+nmap <F4> :Gblame<CR>
+nmap <F5> :Gdiffsplit<CR>
+nmap <F6> :Vista!!<CR>
+nmap <F8> :HardTimeToggle<CR>
