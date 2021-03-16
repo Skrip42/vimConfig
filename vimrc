@@ -32,6 +32,8 @@ Plug 'iamcco/coc-vimlsp',            { 'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-svg',               { 'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-markdownlint', { 'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls',          { 'do': 'yarn install --frozen-lockfile'}
+"pairing
+" Plug 'neoclide/coc-pairs', { 'do': 'yarn install --frozen-lockfile'}
 "snippets
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'honza/vim-snippets'
