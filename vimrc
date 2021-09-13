@@ -62,8 +62,16 @@ Plug '~/project/templator'
 Plug 'takac/vim-hardtime'
 "tagbar
 Plug 'liuchengxu/vista.vim'
+"gollang support
+Plug 'fatih/vim-go'
 
 call plug#end()
+
+" let g:tmux_navigator_no_mappings = 1
+" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr> <c-w><r>
+" nnoremap <silent> <c-l> :TmuxNavigateRight<cr> <c-w><R>
+
+
 
 "----------------------------------------------------------------------------------------------------
 "base

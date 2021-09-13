@@ -43,7 +43,7 @@
     },
     {
         "pattern":"\\\/[A-Z]\\w+Command\\.php$",
-        "priority":2,
+       "priority":2,
         "command":"0r !python ~/.vim/templates/php/symfony_command.py % %:p",
         "comment":"symfony command class"
     },
