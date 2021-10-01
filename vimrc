@@ -2,7 +2,6 @@
 "plugins
 "----------------------------------------------------------------------------------------------------
 call plug#begin('~/.bim/plugged')
-
 "colorschem
 Plug 'Skrip42/angr.vim'
 "dir exploration
@@ -237,6 +236,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> [f  <Plug>(coc-fix-current)
 
 
+" let g:go_metalinter_autosave_enabled = ['vet', 'revive', 'errcheck', 'gosimple']
+" let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck']
+" let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck', 'gosimple']
+" let g:go_metalinter_autosave = 1
+
 "----------------------------------------------------------------------------------------------------
 "syntastic plugin config
 "----------------------------------------------------------------------------------------------------
@@ -244,6 +248,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+" let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+" let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint', 'errcheck']
+" let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
 
 "let g:syntastic_php_checkers = ['php', 'phpcs'] "uncoment this to disable phpcs and phpmb
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
@@ -372,6 +382,13 @@ let g:vista#renderer#icons = {
 \   "function": "ƒ:",
 \   "variable": "v:",
 \  }
+"----------------------------------------------------------------------------------------------------
+"color fix
+"----------------------------------------------------------------------------------------------------
+hi clear Conceal
+hi Conceal cterm=underline gui=undercurl guisp=#007777
+
+
 
 "----------------------------------------------------------------------------------------------------
 "functional key bindings
