@@ -222,11 +222,6 @@ nmap <silent> gse :.,+1! python3 ~/.vim/scripts/phpFunctionExploder.py <CR>
 vmap <silent> gse :'<,'>! python3 ~/.vim/scripts/phpFunctionImploder.py <CR>
 
 "----------------------------------------------------------------------------------------------------
-"php function docblock
-"----------------------------------------------------------------------------------------------------
-nmap <silent> <Leader>d 0v} :'<,'>! go run ~/.vim/scripts/phpDoc/docFunction.go <CR>
-
-"----------------------------------------------------------------------------------------------------
 "coc plugin config
 "----------------------------------------------------------------------------------------------------
 " GoTo code navigation.
@@ -241,7 +236,11 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> [f  <Plug>(coc-fix-current)
 
 
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_autosave_enabled = ['vet', 'revive', 'errcheck', 'gosimple']
+" let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck']
+" let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck', 'gosimple']
+" let g:go_metalinter_enabled = ['errcheck']
+" let g:go_metalinter_autosave = 1
 
 "----------------------------------------------------------------------------------------------------
 "syntastic plugin config
@@ -250,6 +249,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+" let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+" let g:syntastic_go_checkers = ['errcheck']
+" let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['go']}
+" let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint', 'errcheck']
+" let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+g:loaded_syntastic_go_go_checker
+
+
+"let g:syntastic_php_checkers = ['php', 'phpcs'] "uncoment this to disable phpcs and phpmb
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 "----------------------------------------------------------------------------------------------------
