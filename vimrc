@@ -19,7 +19,7 @@ Plug 'neoclide/coc.nvim',    { 'branch': 'release'}
 Plug 'neoclide/coc-tabnine', { 'do': 'yarn install --frozen-lockfile'}
 "language servers
 Plug 'neoclide/coc-json',            { 'do': 'yarn install --frozen-lockfile'}
-Plug 'josa42/coc-go',                { 'do': 'yarn install --frozen-lockfile'}
+"Plug 'josa42/coc-go',                { 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html',            { 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css',             { 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver',        { 'do': 'yarn install --frozen-lockfile'}
@@ -241,11 +241,22 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> [f  <Plug>(coc-fix-current)
 
 
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" let g:go_metalinter_enabled = ['govet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck', 'deadcode']
 
 "----------------------------------------------------------------------------------------------------
 "syntastic plugin config
 "----------------------------------------------------------------------------------------------------
+" let g:syntastic_go_checkers = ['golint', 'govet']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+" let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint', 'goerrcheck', 'go']
+" let g:syntastic_go_checkers = ['golangci-lint']
+" let g:syntastic-go-golangci-lint = []
+let g:loaded_syntastic_go_golangci_lint_checker = 1
+" let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1

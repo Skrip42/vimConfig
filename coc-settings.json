@@ -1,10 +1,18 @@
 {
+    "diagnostic.checkCurrentLine": true,
     "languageserver": {
         "go": {
           "command": "~/go/bin/gopls",
           "rootPatterns": ["go.mod"],
           "trace.server": "verbose",
           "filetypes": ["go"]
+        },
+        "golangci-lint-languageserver": {
+          "command": "golangci-lint-langserver",
+          "filetypes": ["go"],
+          "initializationOptions": {
+            "command": ["golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json"]
+          }
         },
         "dockerfile": {
             "command": "docker-langserver",
