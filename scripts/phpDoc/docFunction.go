@@ -108,7 +108,7 @@ func main() {
 	}
 	fmt.Println(phpfunc.Offset + " */")
 
-	fmt.Println(string(f))
+	fmt.Print(string(f))
 }
 
 func PadRight(str, pad string, lenght int) string {
