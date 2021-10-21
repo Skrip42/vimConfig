@@ -10,6 +10,7 @@ my new vim config
 - zypper in npm
 - zypper in yarn
 - zypper in git
+- zypper in go
 
 - sudo npm i intelephense -g
 - zypper in cmake
@@ -22,3 +23,4 @@ my new vim config
 ## in vim
 
 - :PlugInstall
+- :GoInstallBinaries
